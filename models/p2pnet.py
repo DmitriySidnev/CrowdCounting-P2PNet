@@ -148,7 +148,7 @@ class AnchorPoints(nn.Module):
         all_anchor_points = np.expand_dims(all_anchor_points, axis=0)
         # send reference points to device
         if torch.cuda.is_available():
-            return torch.from_numpy(all_anchor_points.astype(np.float32)).cuda()
+            return torch.from_numpy(all_anchor_points.astype(np.float32))#.cuda()
         else:
             return torch.from_numpy(all_anchor_points.astype(np.float32))
 
@@ -218,7 +218,7 @@ class P2PNet(nn.Module):
         # run the regression and classification branch
         regression = self.regression(features_fpn[1]) * 100 # 8x
         classification = self.classification(features_fpn[1])
-        anchor_points = self.anchor_points(samples).repeat(batch_size, 1, 1)
+        anchor_points = self.anchor_points(samples)#.repeat(batch_size, 1, 1)
         # decode the points as prediction
         output_coord = regression + anchor_points
         output_class = classification
