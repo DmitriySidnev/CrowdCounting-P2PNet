@@ -1,6 +1,6 @@
 from subprocess import run, DEVNULL, CalledProcessError  # nosec
 
-from mo import mo_onnx
+#from mo import mo_onnx
 import torch
 
 from models import build_model
@@ -52,7 +52,7 @@ norm_std = [0.229, 0.224, 0.225]  # should be fixed if necessary
 mean_values = str([s for s in norm_mean])
 scale_values = str([s for s in norm_std])
 
-mo_onnx.main()
+#mo_onnx.main()
 """
 command_line = ['mo',
                 f'--input_model={output_file_path}',
